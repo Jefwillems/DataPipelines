@@ -10,4 +10,9 @@ public class DefaultSource<TInputType> : BaseDataSource<TInputType>
             .GetRequiredService<ITransformer<TInputType>>())
     {
     }
+
+    protected override Task<TInputType> GetData(Context context)
+    {
+        return default;
+    }
 }

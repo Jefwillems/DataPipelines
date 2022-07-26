@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Jef.DataPipeline.Extensions.Amqp\Jef.DataPipeline.Extensions.Amqp.csproj" />
+      <ProjectReference Include="..\Jef.DataPipeline.Extensions.Http\Jef.DataPipeline.Extensions.Http.csproj" />
       <ProjectReference Include="..\Jef.DataPipeline\Jef.DataPipeline.csproj" />
     </ItemGroup>
 

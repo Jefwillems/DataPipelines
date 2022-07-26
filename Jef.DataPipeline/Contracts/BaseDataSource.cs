@@ -13,4 +13,13 @@ public abstract class BaseDataSource<TDataType>
     {
         await _transformer.Execute(data, context);
     }
+
+    public async Task Execute()
+    {
+        var context = new Context();
+        var data = await GetData(context);
+        await SendToTransformer(data, context);
+    }
+
+    protected abstract Task<TDataType> GetData(Context context);
 }

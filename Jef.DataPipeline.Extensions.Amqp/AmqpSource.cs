@@ -81,4 +81,9 @@ public class AmqpSource<TDataType> : BaseDataSource<TDataType>, IHostedService, 
     {
         Dispose(false);
     }
+
+    protected override Task<TDataType> GetData(Context context)
+    {
+        throw new NotImplementedException($"AmqpSource is a listener and does not use {nameof(GetData)}");
+    }
 }
