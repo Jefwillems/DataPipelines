@@ -10,7 +10,7 @@ public class HttpPollingSource<TInput> : BaseDataSource<TInput>
     public HttpPollingSource(
         PollingConfig config,
         IServiceScopeFactory scopeFactory)
-        : base(scopeFactory)
+        : base(scopeFactory.CreateScope().ServiceProvider.GetRequiredService<ITransformer<TInput>>())
     {
         _config = config;
     }

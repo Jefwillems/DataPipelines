@@ -20,7 +20,7 @@ public class AmqpSource<TDataType> : BaseDataSource<TDataType>, IHostedService, 
     public AmqpSource(
         IServiceScopeFactory scopeFactory,
         AmqpConfig config, ILogger<AmqpSource<TDataType>> logger)
-        : base(scopeFactory)
+        : base(scopeFactory.CreateScope().ServiceProvider.GetRequiredService<ITransformer<TDataType>>())
     {
         _config = config;
         _logger = logger;

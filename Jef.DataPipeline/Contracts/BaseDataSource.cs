@@ -1,20 +1,16 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Jef.DataPipeline.Contracts;
 
 public abstract class BaseDataSource<TDataType>
 {
-    private readonly IServiceScopeFactory _scopeFactory;
+    private readonly ITransformer<TDataType> _transformer;
 
-    protected BaseDataSource(IServiceScopeFactory scopeFactory)
+    protected BaseDataSource(ITransformer<TDataType> transformer)
     {
-        _scopeFactory = scopeFactory;
+        _transformer = transformer;
     }
 
     protected async Task SendToTransformer(TDataType data, Context context)
     {
-        using var scope = _scopeFactory.CreateScope();
-        var s = scope.ServiceProvider.GetRequiredService<ITransformer<TDataType>>();
-        await s.Execute(data, context);
+        await _transformer.Execute(data, context);
     }
 }
