@@ -9,10 +9,9 @@ public class MyTransformer : BaseTransformer<InputData, OutputData>
     {
     }
 
-    public override async Task Transform(InputData input, Context context)
+    protected override Task<OutputData> Process(InputData input, Context context)
     {
         var x = input.Hello;
-        var output = new OutputData { World = $"!!!!!{x}!!!!!" };
-        await SendToDestination(output, context);
+        return Task.FromResult(new OutputData { World = $"!!!!!{x}!!!!!" });
     }
 }

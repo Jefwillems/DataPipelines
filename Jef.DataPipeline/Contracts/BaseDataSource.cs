@@ -15,6 +15,6 @@ public abstract class BaseDataSource<TDataType>
     {
         using var scope = _scopeFactory.CreateScope();
         var s = scope.ServiceProvider.GetRequiredService<ITransformer<TDataType>>();
-        await s.Transform(data, context);
+        await s.Execute(data, context);
     }
 }

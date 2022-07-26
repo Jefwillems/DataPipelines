@@ -2,7 +2,7 @@ namespace Jef.DataPipeline.Contracts;
 
 public interface ITransformer<in TInput>
 {
-    Task Transform(TInput input, Context context);
+    Task Execute(TInput input, Context context);
 }
 
 public abstract class BaseTransformer<TInput, TOutput> : ITransformer<TInput>
@@ -14,9 +14,15 @@ public abstract class BaseTransformer<TInput, TOutput> : ITransformer<TInput>
         _destination = destination;
     }
 
-    public abstract Task Transform(TInput input, Context context);
+    public async Task Execute(TInput input, Context context)
+    {
+        var output = await Process(input, context);
+        await SendToDestination(output, context);
+    }
 
-    public async Task SendToDestination(TOutput output, Context context)
+    protected abstract Task<TOutput> Process(TInput input, Context context);
+
+    private async Task SendToDestination(TOutput output, Context context)
     {
         await _destination.SendData(output, context);
     }

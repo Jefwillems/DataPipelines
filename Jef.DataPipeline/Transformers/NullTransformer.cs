@@ -9,8 +9,8 @@ public class NullTransformer<TInputType, TOutputType> : BaseTransformer<TInputTy
     {
     }
 
-    public override async Task Transform(TInputType input, Context context)
+    protected override Task<TOutputType> Process(TInputType input, Context context)
     {
-        await SendToDestination(default!, context);
+        return Task.FromResult(default(TOutputType)!);
     }
 }
