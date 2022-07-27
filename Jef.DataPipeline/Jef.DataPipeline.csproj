@@ -4,14 +4,31 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Title>DataPipeline</Title>
+        <Authors>Jef Willems</Authors>
+        <Description>Provides functionality to move data from one place to another, reducing boilerplate code</Description>
+        <PackageProjectUrl>https://github.com/Jefwillems/DataPipelines</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/Jefwillems/DataPipelines/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageIcon>icon.png</PackageIcon>
+        <RepositoryUrl>https://github.com/Jefwillems/DataPipelines</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Destinations\Http" />
+        <Folder Include="Destinations\Http"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="icon.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
     </ItemGroup>
 
 </Project>
