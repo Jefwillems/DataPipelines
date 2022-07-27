@@ -21,5 +21,10 @@ public abstract class BaseDataSource<TDataType>
         await SendToTransformer(data, context);
     }
 
+    public async Task ReceiveData(TDataType input, Context context)
+    {
+        await SendToTransformer(input, context);
+    }
+
     protected abstract Task<TDataType> GetData(Context context);
 }
