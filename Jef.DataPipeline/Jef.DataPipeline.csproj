@@ -17,17 +17,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Destinations\Http"/>
+        <Folder Include="Destinations\Http" />
     </ItemGroup>
 
     <ItemGroup>
         <None Update="icon.png">
             <Pack>True</Pack>
             <PackagePath></PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 
