@@ -1,36 +1,48 @@
 using Jef.DataPipeline.Configuration;
-using Jef.DataPipeline.Contracts;
 using Jef.DataPipeline.DemoApp;
 using Jef.DataPipeline.DemoApp.ViewModels;
+using Jef.DataPipeline.Extensions.Amqp;
 using Jef.DataPipeline.Extensions.Http;
 
-var builder = WebApplication.CreateBuilder(args);
+var b = WebApplication.CreateBuilder(args);
+b.Configuration.AddCommandLine(args);
 
-// builder.Services.AddPipeline<InputData, OutputData>(conf =>
-// {
-//     conf.AddAmqpSource(config => builder.Configuration.GetSection("Amqp").Bind(config))
-//         .SetTransformer<MyTransformer>();
-// });
-builder.Services.AddPipeline<HttpInput, HttpOutput>(conf =>
+var programToRun = b.Configuration.GetValue<int>("Program");
+
+switch (programToRun)
 {
-    conf.AddHttpSource(config =>
+    case 1:
+        AmqpInHttpOut(b);
+        break;
+    case 2:
+        AmqpToAmqp(b);
+        break;
+    default:
+        Console.WriteLine("No program selected");
+        break;
+}
+
+void AmqpInHttpOut(WebApplicationBuilder builder)
+{
+    builder.Services.AddPipeline<InputData, OutputData>(conf =>
     {
-        config.Uri = "https://httpbin.org/get";
-        config.Headers = new Dictionary<string, string> { { "accept", "application/json" } };
-        config.Method = HttpMethod.Get;
-    }).SetTransformer<MyHttpTransformer>();
-});
+        // docker run  -it -p 8161:8161 -p 61616:61616 -p 5672:5672 vromero/activemq-artemis
+        conf.AddAmqpSource(config => builder.Configuration.GetSection("Amqp").Bind(config))
+            .SetTransformer<MyTransformer>()
+            .AddHttpDestination(config => builder.Configuration.GetSection("HttpDestination").Bind(config));
+    });
+    var app = builder.Build();
+    app.Run();
+}
 
-var app = builder.Build();
-app.MapGet("/", () => "Hello World!");
-
-app.MapGet("/httptest", async (HttpContext context) =>
+void AmqpToAmqp(WebApplicationBuilder builder)
 {
-    var source = context.RequestServices.GetRequiredService<BaseDataSource<HttpInput>>();
-    await source.Execute();
-    return Results.Ok("Hello World!");
-});
-
-app.UseHttpPipelineTrigger<HttpInput>("httpinput");
-
-app.Run();
+    builder.Services.AddPipeline<InputData, OutputData>(conf =>
+    {
+        conf.AddAmqpSource(config => builder.Configuration.GetSection("Amqp").Bind(config))
+            .SetTransformer<MyTransformer>()
+            .AddAmqpDestination(config => builder.Configuration.GetSection("Amqp").Bind(config));
+    });
+    var app = builder.Build();
+    app.Run();
+}

@@ -23,7 +23,7 @@ public class HttpSource<TInput> : BaseDataSource<TInput>
     protected override async Task<TInput> GetData(Context context)
     {
         var client = _httpClientFactory.CreateClient();
-        var request = new HttpRequestMessage(_configuration.Method, _configuration.Uri);
+        var request = new HttpRequestMessage(new HttpMethod(_configuration.Method), _configuration.Uri);
         foreach (var (name, value) in _configuration.Headers)
         {
             request.Headers.Add(name, value);
