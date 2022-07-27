@@ -1,4 +1,4 @@
-name: test and publish to nuget
+name: test and publish
 on:
   push:
     branches:
