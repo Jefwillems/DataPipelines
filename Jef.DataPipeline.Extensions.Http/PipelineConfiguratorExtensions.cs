@@ -18,6 +18,12 @@ public static class PipelineConfiguratorExtensions
         configure(configuration);
         self.ConfigureOptions(configuration);
         self.GetServices().AddHttpClient();
+
+        if (configuration.GetInterval() != null)
+        {
+            self.GetServices().AddHostedService<HttpSourcePoller<TInput>>();
+        }
+
         return self;
     }
 

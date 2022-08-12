@@ -27,6 +27,16 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "commandLineArgs": "Program=2"
+    },
+    "HttpToHttp": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://localhost:7156;http://localhost:5203",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "commandLineArgs": "Program=3"
     }
   }
 }

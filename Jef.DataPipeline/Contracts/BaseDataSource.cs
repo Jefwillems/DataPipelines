@@ -18,7 +18,7 @@ public abstract class BaseDataSource<TDataType>
     {
         var context = new Context();
         var data = await GetData(context);
-        await SendToTransformer(data, context);
+        await ReceiveData(data, context);
     }
 
     public async Task ReceiveData(TDataType input, Context context)
