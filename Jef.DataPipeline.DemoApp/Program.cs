@@ -17,6 +17,9 @@ switch (programToRun)
     case 2:
         AmqpToAmqp(b);
         break;
+    case 3:
+        HttpInHttpOut(b);
+        break;
     default:
         Console.WriteLine("No program selected");
         break;
@@ -42,6 +45,18 @@ void AmqpToAmqp(WebApplicationBuilder builder)
         conf.AddAmqpSource(config => builder.Configuration.GetSection("Amqp").Bind(config))
             .SetTransformer<MyTransformer>()
             .AddAmqpDestination(config => builder.Configuration.GetSection("Amqp").Bind(config));
+    });
+    var app = builder.Build();
+    app.Run();
+}
+
+void HttpInHttpOut(WebApplicationBuilder builder)
+{
+    builder.Services.AddPipeline<HttpGetData, OutputData>(conf =>
+    {
+        conf.AddHttpSource(config => builder.Configuration.GetSection("HttpSource").Bind(config))
+            .SetTransformer<HttpExampleTransformer>()
+            .AddHttpDestination(config => builder.Configuration.GetSection("HttpDestination").Bind(config));
     });
     var app = builder.Build();
     app.Run();
