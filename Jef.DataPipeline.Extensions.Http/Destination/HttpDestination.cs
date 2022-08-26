@@ -28,6 +28,7 @@ public class HttpDestination<TDataType> : BaseDestination<TDataType>
         var request = new HttpRequestMessage(new HttpMethod(_configuration.Method), _configuration.Uri);
         var body = JsonSerializer.Serialize(data);
         request.Content = new StringContent(body, Encoding.UTF8, MediaTypeNames.Application.Json);
+        request.Headers.Add(_configuration.CorrelationIdHeaderName, context.CorrelationId);
         foreach (var (name, value) in _configuration.Headers)
         {
             request.Headers.Add(name, value);

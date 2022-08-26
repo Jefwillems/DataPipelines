@@ -11,6 +11,5 @@ public static class ServiceCollectionExtensions
     {
         var config = new PipelineConfigurator<TInputType, TOutputType>(services);
         builder(config);
-        //services.AddScoped<BaseDataPipeline<TInputType, TOutputType>, DataPipeline<TInputType, TOutputType>>();
     }
 }

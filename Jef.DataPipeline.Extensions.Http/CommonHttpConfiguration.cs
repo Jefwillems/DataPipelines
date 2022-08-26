@@ -5,6 +5,8 @@ public class CommonHttpConfiguration
     public string Uri { get; set; }
 
     public string Method { get; set; }
-    
+
     public IDictionary<string, string> Headers { get; set; }
+
+    public string CorrelationIdHeaderName { get; set; } = "X-Correlation-ID";
 }
