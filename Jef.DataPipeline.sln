@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jef.DataPipeline.Extensions
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jef.DataPipeline.Extensions.Http", "Jef.DataPipeline.Extensions.Http\Jef.DataPipeline.Extensions.Http.csproj", "{5A1924BE-6940-4F50-9A01-3E1C9B3E0825}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jef.DataPipeline.Extensions.Xml", "Jef.DataPipeline.Extensions.Xml\Jef.DataPipeline.Extensions.Xml.csproj", "{04BC9765-E7BB-4DF1-9044-E41B48AD8666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jef.DataPipeline.Extensions.File", "Jef.DataPipeline.Extensions.File\Jef.DataPipeline.Extensions.File.csproj", "{0E50BFAD-9112-4E27-B522-6F4E58047DB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,11 +40,21 @@ Global
 		{5A1924BE-6940-4F50-9A01-3E1C9B3E0825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A1924BE-6940-4F50-9A01-3E1C9B3E0825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A1924BE-6940-4F50-9A01-3E1C9B3E0825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04BC9765-E7BB-4DF1-9044-E41B48AD8666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04BC9765-E7BB-4DF1-9044-E41B48AD8666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04BC9765-E7BB-4DF1-9044-E41B48AD8666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04BC9765-E7BB-4DF1-9044-E41B48AD8666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E50BFAD-9112-4E27-B522-6F4E58047DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E50BFAD-9112-4E27-B522-6F4E58047DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E50BFAD-9112-4E27-B522-6F4E58047DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E50BFAD-9112-4E27-B522-6F4E58047DB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26DF42EA-E1DE-48AA-99FA-BDC78DD191C9} = {74D9D000-AA83-460E-AFDA-FA52EB4778F5}
 		{9BAC6711-846E-4D1E-985F-0F1CECAF61D0} = {CD0A9901-EB36-478E-8D27-91499EDC8B26}
 		{723E612B-A29B-40E8-934D-BA6000776202} = {FF1E2A9B-8BC5-4EA3-A9BC-9797344566D5}
 		{5A1924BE-6940-4F50-9A01-3E1C9B3E0825} = {FF1E2A9B-8BC5-4EA3-A9BC-9797344566D5}
+		{04BC9765-E7BB-4DF1-9044-E41B48AD8666} = {FF1E2A9B-8BC5-4EA3-A9BC-9797344566D5}
+		{0E50BFAD-9112-4E27-B522-6F4E58047DB3} = {FF1E2A9B-8BC5-4EA3-A9BC-9797344566D5}
 	EndGlobalSection
 EndGlobal

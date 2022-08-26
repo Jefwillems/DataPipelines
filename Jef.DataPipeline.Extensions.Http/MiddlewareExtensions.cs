@@ -1,3 +1,4 @@
+using System.Net;
 using Jef.DataPipeline.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +15,7 @@ public static class MiddlewareExtensions
         {
             var source = context.RequestServices.GetRequiredService<BaseDataSource<TInputType>>();
             await source.ReceiveData(input, new Context());
+            return Results.Ok();
         });
         return app;
     }
